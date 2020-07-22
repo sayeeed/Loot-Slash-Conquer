@@ -63,8 +63,6 @@ public class DungeonChunkGenerator extends ChunkGenerator
 		int y = 100;		
 		BlockPos corner = new BlockPos((chunk.getPos().x * 16), y, (chunk.getPos().z * 16));
 		
-		System.out.println(corner.getX() + "   " + (corner.getX() % 256));
-		
 		if (corner.getX() % 256 == 0 || corner.getZ() % 256 == 0)
 		{
 			chunk.setBlockState(corner, Blocks.WHITE_CONCRETE.getDefaultState(), false);
