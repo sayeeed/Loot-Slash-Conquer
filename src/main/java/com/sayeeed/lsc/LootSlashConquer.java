@@ -1,5 +1,6 @@
 package com.sayeeed.lsc;
 
+import com.sayeeed.lsc.init.LSCDimensions;
 import com.sayeeed.lsc.init.LSCItems;
 
 import net.fabricmc.api.ModInitializer;
@@ -20,5 +21,6 @@ public class LootSlashConquer implements ModInitializer
 	public void onInitialize() 
 	{
 		LSCItems.registerItems();
+		LSCDimensions.registerDimensions();
 	}
 }
