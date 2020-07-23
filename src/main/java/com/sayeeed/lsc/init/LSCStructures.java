@@ -55,11 +55,15 @@ public class LSCStructures
 		RegistryEntryAddedCallback.event(Registry.BIOME).register((i, identifier, biome) -> putStructures(biome));
 	}
 	
+	/**
+	 * Adds our structures to specific biomes.
+	 * @param biome
+	 */
 	public static void putStructures(Biome biome)
 	{
 		category = biome.getCategory();
 		
-		if (category == Biome.Category.PLAINS)
+		if (category == Biome.Category.PLAINS) // TODO: change biome spawns
 		{
 			biome.addStructureFeature(DUNGEON_PORTAL);
 		}

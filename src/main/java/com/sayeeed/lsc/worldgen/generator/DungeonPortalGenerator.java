@@ -29,7 +29,7 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
  */
 public class DungeonPortalGenerator 
 {
-	private static final Identifier DUNGEON_PORTAL = Reference.id("dungeon/portals");
+	private static final Identifier DUNGEON_PORTAL = Reference.id("dungeons/portals");
 	
 	static
 	{
@@ -38,7 +38,8 @@ public class DungeonPortalGenerator
                         DUNGEON_PORTAL,
                         new Identifier("empty"),
                         ImmutableList.of(
-                                new Pair<>(new LegacySinglePoolElement(Reference.MODID + ":dungeons/portals/overworld_portal_1"), 1)
+                                //new Pair<>(new LegacySinglePoolElement(Reference.MODID + ":dungeons/portals/overworld_portal_1"), 1)
+                        		new Pair<>(new LegacySinglePoolElement(Reference.MODID + ":dungeons/starting_rooms/starting_room_1"), 1)
                         ),
                         StructurePool.Projection.RIGID
                 )
@@ -48,7 +49,6 @@ public class DungeonPortalGenerator
 	public static void addPieces(ChunkGenerator chunkGenerator, StructureManager structureManager, BlockPos pos, List<StructurePiece> pieces, ChunkRandom random) 
 	{
         StructurePoolBasedGenerator.addPieces(DUNGEON_PORTAL, 7, DungeonPortalGenerator.Piece::new, chunkGenerator, structureManager, pos, pieces, random, true, true);
-        System.out.println("generating overworld dungeon portal");
     }
 	
 	public static class Piece extends PoolStructurePiece 
