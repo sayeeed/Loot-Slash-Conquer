@@ -1,5 +1,6 @@
 package com.sayeeed.lsc;
 
+import com.sayeeed.lsc.init.LSCBlocks;
 import com.sayeeed.lsc.init.LSCDimensions;
 import com.sayeeed.lsc.init.LSCItems;
 import com.sayeeed.lsc.init.LSCStructures;
@@ -22,6 +23,7 @@ public class LootSlashConquer implements ModInitializer
 	public void onInitialize() 
 	{
 		LSCItems.registerItems();
+		LSCBlocks.registerBlocks();
 		LSCStructures.registerStructures();
 		LSCDimensions.registerDimensions();
 	}
