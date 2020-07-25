@@ -1,18 +1,24 @@
 package com.sayeeed.lsc.block;
 
 import com.sayeeed.lsc.init.LSCBlocks;
+import com.sayeeed.lsc.init.LSCDimensions;
+import com.sayeeed.lsc.worldgen.dimension.DungeonPlacementHandler;
 
+import net.fabricmc.fabric.api.dimension.v1.FabricDimensions;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Tickable;
+import net.minecraft.world.World;
 
 /**
  * 
  * @author sayeeed
  *
  */
+@SuppressWarnings("deprecation")
 public class DungeonPortalBlockEntity extends BlockEntity implements Tickable
 {
 	private boolean hasDungeonGenerated;
@@ -33,23 +39,39 @@ public class DungeonPortalBlockEntity extends BlockEntity implements Tickable
 		// teleport player into the dungeon area. if dungeon has not been generate, generate dungeon.
 		// increase player count and begin dungeon countdown.
 		
-		PlayerEntity player = this.getWorld().getClosestPlayer(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 5, false);
-		
-		if (player != null && partyCount <= 4)
+		if (!this.getWorld().isClient())
 		{
-			if (player.isTouchingWater() && (player.getBlockPos().getY() > this.getPos().getY() || player.getBlockPos().getY() <= this.getPos().getY() + 4));
+			PlayerEntity player = this.getWorld().getClosestPlayer(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 5, false);
+			
+			if (player != null && !isDungeonInProgress && partyCount <= 4)
 			{
-				if (!hasDungeonGenerated)
+				if (player.isSubmergedInWater() && (player.getBlockPos().getY() > this.getPos().getY() || player.getBlockPos().getY() <= this.getPos().getY() + 4))
 				{
-					// gen dungeon
+					if (!hasDungeonGenerated)
+					{
+						// gen dungeon
+					}
+					
+					teleportPlayerToDungeon(player);
 				}
 			}
 		}
 	}
 	
-	private void teleportPlayer()
+	private void teleportPlayerToDungeon(PlayerEntity player)
 	{
+		ServerWorld serverWorld = (ServerWorld) player.getEntityWorld();
 		
+		if (serverWorld.getRegistryKey() == World.OVERWORLD)
+		{
+			ServerWorld dungeonWorld = serverWorld.getServer().getWorld(LSCDimensions.DUNGEON_DIMENSION);
+			
+			FabricDimensions.teleport(player, dungeonWorld, DungeonPlacementHandler.enter(this.getPos()));
+		}
+		else
+		{
+			// teleporting fails
+		}
 	}
 	
 	@Override

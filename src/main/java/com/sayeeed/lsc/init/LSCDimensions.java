@@ -25,15 +25,13 @@ import net.minecraft.world.World;
 @SuppressWarnings("deprecation")
 public class LSCDimensions 
 {
-	private static RegistryKey<World> dimensionRegistryKey;
+	public static final RegistryKey<World> DUNGEON_DIMENSION = RegistryKey.of(Registry.DIMENSION, new Identifier("lsc", "dungeon_dimension"));;
 
 	public static void registerDimensions()
 	{
 		Registry.register(Registry.CHUNK_GENERATOR, new Identifier("lsc", "dungeon_dimension"), DungeonChunkGenerator.CODEC);
 
-		dimensionRegistryKey = RegistryKey.of(Registry.DIMENSION, new Identifier("lsc", "dungeon_dimension"));
-
-		FabricDimensions.registerDefaultPlacer(dimensionRegistryKey, LSCDimensions::placeEntityInVoid);
+		FabricDimensions.registerDefaultPlacer(DUNGEON_DIMENSION, LSCDimensions::placeEntityInVoid);
 	}
 	
 	@SuppressWarnings("unused")
