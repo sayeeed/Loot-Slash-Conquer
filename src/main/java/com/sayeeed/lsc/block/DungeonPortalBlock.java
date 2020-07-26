@@ -1,5 +1,7 @@
 package com.sayeeed.lsc.block;
 
+import com.sayeeed.lsc.block.entity.DungeonPortalBlockEntity;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockEntityProvider;
 import net.minecraft.block.entity.BlockEntity;

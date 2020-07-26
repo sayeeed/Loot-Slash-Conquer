@@ -38,8 +38,8 @@ public class DungeonPortalGenerator
                         DUNGEON_PORTAL,
                         new Identifier("empty"),
                         ImmutableList.of(
-                                //new Pair<>(new LegacySinglePoolElement(Reference.MODID + ":dungeons/portals/overworld_portal_1"), 1)
-                        		new Pair<>(new LegacySinglePoolElement(Reference.MODID + ":dungeons/starting_rooms/starting_room_1"), 1)
+                                new Pair<>(new LegacySinglePoolElement(Reference.MODID + ":dungeons/portals/overworld_portal_1"), 1)
+                        		//new Pair<>(new LegacySinglePoolElement(Reference.MODID + ":dungeons/starting_rooms/starting_room_1"), 1)
                         ),
                         StructurePool.Projection.RIGID
                 )

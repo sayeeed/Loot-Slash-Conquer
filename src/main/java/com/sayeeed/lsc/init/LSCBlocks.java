@@ -1,7 +1,7 @@
 package com.sayeeed.lsc.init;
 
 import com.sayeeed.lsc.block.DungeonPortalBlock;
-import com.sayeeed.lsc.block.DungeonPortalBlockEntity;
+import com.sayeeed.lsc.block.entity.DungeonPortalBlockEntity;
 import com.sayeeed.lsc.util.Reference;
 
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
