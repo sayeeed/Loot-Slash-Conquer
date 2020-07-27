@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "loot-slash-conquer",
+  "id": "lsc",
   "version": "${version}",
 
   "name": "Loot Slash Conquer",
@@ -24,6 +24,7 @@
     ]
   },
   "mixins": [
+  	"lsc.mixins.json"
   ],
 
   "depends": {

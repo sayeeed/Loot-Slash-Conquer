@@ -11,15 +11,16 @@ import com.sayeeed.lsc.init.LSCDimensions;
 import com.sayeeed.lsc.util.Reference;
 
 import net.minecraft.block.Blocks;
+import net.minecraft.block.entity.ChestBlockEntity;
 import net.minecraft.block.entity.JigsawBlockEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.structure.Structure;
 import net.minecraft.structure.Structure.StructureBlockInfo;
+import net.minecraft.structure.StructurePlacementData;
 import net.minecraft.structure.pool.SinglePoolElement;
 import net.minecraft.structure.pool.StructurePool;
 import net.minecraft.structure.pool.StructurePoolBasedGenerator;
-import net.minecraft.structure.StructurePlacementData;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -115,6 +116,23 @@ public class DungeonGenerator
 		}
 		
 		return new BlockPos(x, 100, z);
+	}
+	
+	public static void handleDataBlocks(World world, StructureBlockInfo dataBlockInfo)
+	{
+		LootSlashConquer.LOGGER.info("Handling Data Blocks!");
+		
+		if (world.getBlockState(dataBlockInfo.pos.down(1)).isOf(Blocks.CHEST))
+		{
+			@SuppressWarnings("unused")
+			ChestBlockEntity chest = (ChestBlockEntity) world.getBlockEntity(dataBlockInfo.pos.down(1));
+			
+			switch (dataBlockInfo.tag.getString("metadata"))
+			{
+				case "chest":
+					// set loot table
+			}
+		}
 	}
 	
 	static
