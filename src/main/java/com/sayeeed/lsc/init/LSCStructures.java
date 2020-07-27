@@ -3,12 +3,10 @@ package com.sayeeed.lsc.init;
 import com.sayeeed.lsc.util.Reference;
 import com.sayeeed.lsc.worldgen.generator.DungeonPortalGenerator;
 import com.sayeeed.lsc.worldgen.structure.DungeonPortalStructure;
-import com.sayeeed.lsc.worldgen.structure.processor.JigsawStructureProcessor;
 
 import net.earthcomputer.libstructure.LibStructure;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.minecraft.structure.StructurePieceType;
-import net.minecraft.structure.processor.StructureProcessorType;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.GenerationStep;
@@ -27,10 +25,6 @@ public class LSCStructures
 {
 	public static final ConfiguredStructureFeature<DefaultFeatureConfig, ? extends StructureFeature<DefaultFeatureConfig>> DUNGEON_PORTAL = register("dungeon_portal_feature", new DungeonPortalStructure(), 165755306, false, false);
     public static final StructurePieceType DUNGEON_PORTAL_PIECE = Registry.register(Registry.STRUCTURE_PIECE, Reference.id("dungeon_portal_piece"), DungeonPortalGenerator.Piece::new);
-
-    public static final StructureProcessorType<JigsawStructureProcessor> JIGSAW_PROCESSOR = Registry.register(Registry.STRUCTURE_PROCESSOR, Reference.id("jigsaw_processor"), () -> {
-    	return JigsawStructureProcessor.CODEC;
-    });
 
     public static Biome.Category category;
     
