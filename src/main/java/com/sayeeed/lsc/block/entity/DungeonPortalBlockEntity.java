@@ -13,6 +13,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.util.Tickable;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
 /**
@@ -24,6 +25,7 @@ import net.minecraft.world.World;
 public class DungeonPortalBlockEntity extends BlockEntity implements Tickable
 {
 	private boolean hasDungeonGenerated;
+	private BlockPos dungeonPos;
 	private boolean isDungeonInProgress;
 	private int partyCount;
 	
@@ -31,6 +33,7 @@ public class DungeonPortalBlockEntity extends BlockEntity implements Tickable
 	{
 		super(LSCBlocks.DUNGEON_PORTAL_BLOCK_ENTITY);
 		hasDungeonGenerated = false;
+		dungeonPos = this.getPos();
 		isDungeonInProgress = false;
 		partyCount = 0;
 	}
@@ -38,9 +41,6 @@ public class DungeonPortalBlockEntity extends BlockEntity implements Tickable
 	@Override
 	public void tick() 
 	{
-		// teleport player into the dungeon area. if dungeon has not been generate, generate dungeon.
-		// increase player count and begin dungeon countdown.
-		
 		if (!this.getWorld().isClient())
 		{
 			PlayerEntity player = this.getWorld().getClosestPlayer(this.getPos().getX(), this.getPos().getY(), this.getPos().getZ(), 5, false);
@@ -53,9 +53,9 @@ public class DungeonPortalBlockEntity extends BlockEntity implements Tickable
 					
 					if (!hasDungeonGenerated)
 					{	
-						DungeonGenerator.generateDungeon(player, this);
-						
-						//hasDungeonGenerated = true;
+						dungeonPos = DungeonGenerator.generateDungeon(player, this);
+						hasDungeonGenerated = true;
+						this.markDirty();
 					}
 					
 					teleportPlayerToDungeon(player, serverWorld);
@@ -70,7 +70,10 @@ public class DungeonPortalBlockEntity extends BlockEntity implements Tickable
 		{
 			ServerWorld dungeonWorld = currentWorld.getServer().getWorld(LSCDimensions.DUNGEON_DIMENSION);
 			
-			FabricDimensions.teleport(player, dungeonWorld, DungeonPlacementHandler.enter(this.getPos()));
+			FabricDimensions.teleport(player, dungeonWorld, DungeonPlacementHandler.enter(dungeonPos.add(5, 2, 5)));
+			
+			partyCount++;
+			this.markDirty();
 		}
 		else
 		{
@@ -84,6 +87,9 @@ public class DungeonPortalBlockEntity extends BlockEntity implements Tickable
 	      super.toTag(tag);
 	      
 	      tag.putBoolean("HasDungeonGenerated", hasDungeonGenerated);
+	      tag.putInt("DungeonX", dungeonPos.getX());
+	      tag.putInt("DungeonY", dungeonPos.getY());
+	      tag.putInt("DungeonZ", dungeonPos.getZ());
 	      tag.putBoolean("IsDungeonInProgress", isDungeonInProgress);
 	      tag.putInt("PartyCount", partyCount);
 	      
@@ -96,6 +102,7 @@ public class DungeonPortalBlockEntity extends BlockEntity implements Tickable
 		   super.fromTag(state, tag);
 		   
 		   hasDungeonGenerated = tag.getBoolean("HasDungeonGenerated");
+		   dungeonPos = new BlockPos(tag.getInt("DungeonX"), tag.getInt("DungeonY"), tag.getInt("DungeonZ"));
 		   isDungeonInProgress = tag.getBoolean("IsDungeonInProgress");
 		   partyCount = tag.getInt("PartyCount");
 	}

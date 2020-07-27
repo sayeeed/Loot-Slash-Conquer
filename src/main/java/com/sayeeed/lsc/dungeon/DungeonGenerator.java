@@ -45,7 +45,7 @@ public class DungeonGenerator
 	 * @param player
 	 * @param portalEntity
 	 */
-	public static void generateDungeon(PlayerEntity player, DungeonPortalBlockEntity portalEntity)
+	public static BlockPos generateDungeon(PlayerEntity player, DungeonPortalBlockEntity portalEntity)
 	{
 		BlockPos dungeonPos = findDungeonLocation(player.getEntityWorld(), portalEntity.getPos());
 		LootSlashConquer.LOGGER.info("Generating dungeon @ " + dungeonPos);
@@ -69,6 +69,8 @@ public class DungeonGenerator
 				jigsawEntity.generate(dungeonWorld, 7, false);
 			}
 		}
+		
+		return dungeonPos;
 	}
 	
 	/**

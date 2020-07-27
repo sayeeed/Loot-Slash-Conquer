@@ -34,7 +34,7 @@ public class DungeonPlacementHandler
 
 	private static BlockPos enterVoid(Entity entity, ServerWorld newWorld, BlockPos portalPos) 
 	{
-		BlockPos spawnPos = new BlockPos(portalPos.getX(), 100, portalPos.getZ());
+		BlockPos spawnPos = new BlockPos(portalPos.getX(), portalPos.getY(), portalPos.getZ());
 		return spawnPos;
 	}
 
