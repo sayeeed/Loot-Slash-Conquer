@@ -2,7 +2,7 @@ package com.sayeeed.lsc.block.entity;
 
 import com.sayeeed.lsc.LootSlashConquer;
 import com.sayeeed.lsc.dungeon.DungeonGenerator;
-import com.sayeeed.lsc.init.LSCBlocks;
+import com.sayeeed.lsc.init.LSCBlockEntities;
 import com.sayeeed.lsc.init.LSCDimensions;
 import com.sayeeed.lsc.worldgen.dimension.DungeonPlacementHandler;
 
@@ -31,7 +31,7 @@ public class DungeonPortalBlockEntity extends BlockEntity implements Tickable
 	
 	public DungeonPortalBlockEntity() 
 	{
-		super(LSCBlocks.DUNGEON_PORTAL_BLOCK_ENTITY);
+		super(LSCBlockEntities.DUNGEON_PORTAL);
 		hasDungeonGenerated = false;
 		dungeonPos = this.getPos();
 		isDungeonInProgress = false;
