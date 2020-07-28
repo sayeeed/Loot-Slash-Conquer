@@ -2,7 +2,6 @@ package com.sayeeed.lsc.worldgen.structure;
 
 import com.google.common.collect.ImmutableList;
 import com.mojang.datafixers.util.Pair;
-import com.sayeeed.lsc.LootSlashConquer;
 import com.sayeeed.lsc.util.Reference;
 import com.sayeeed.lsc.worldgen.generator.DungeonPortalGenerator;
 

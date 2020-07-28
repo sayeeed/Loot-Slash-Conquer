@@ -110,7 +110,11 @@ public class LSCStructures
                         MAIN,
                         TERMINATORS,
                         ImmutableList.of(
-                                Pair.of(new SinglePoolElement("lsc:dungeons/rooms/simple_room_1"), 10),
+                                Pair.of(new SinglePoolElement("lsc:dungeons/rooms/simple_room_1"), 1),
+                                Pair.of(new SinglePoolElement("lsc:dungeons/rooms/simple_room_2"), 3),
+                                Pair.of(new SinglePoolElement("lsc:dungeons/rooms/simple_room_3"), 2),
+                                Pair.of(new SinglePoolElement("lsc:dungeons/rooms/maze_room_1"), 2),
+                                Pair.of(new SinglePoolElement("lsc:dungeons/rooms/trap_room_1"), 2),
                                 Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_straight_1"), 1),
                                 Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_right_1"), 1),
                                 Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_left_1"), 1),
@@ -141,7 +145,10 @@ public class LSCStructures
                         TERMINATORS,
                         new Identifier("empty"),
                         ImmutableList.of(
-                        		 Pair.of(new SinglePoolElement("lsc:dungeons/terminators/terminator"), 1)
+                        		 Pair.of(new SinglePoolElement("lsc:dungeons/terminators/terminator"), 5),
+                        		 Pair.of(new SinglePoolElement("lsc:dungeons/rooms/loot/loot_room_1"), 1),
+                        		 Pair.of(new SinglePoolElement("lsc:dungeons/rooms/loot/loot_room_2"), 1),
+                        		 Pair.of(new SinglePoolElement("lsc:dungeons/rooms/loot/loot_room_3"), 1)
                         ),
                         StructurePool.Projection.RIGID
                 )
