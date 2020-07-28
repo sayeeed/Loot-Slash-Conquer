@@ -119,7 +119,8 @@ public class LSCStructures
                                 Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_right_1"), 1),
                                 Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_left_1"), 1),
                                 Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_t_1"), 1),
-                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_4way_1"), 1)
+                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_4way_1"), 1),
+                                Pair.of(new SinglePoolElement("lsc:dungeons/staircases/staircase_1"), 2)
                         ),
                         StructurePool.Projection.RIGID
                 )

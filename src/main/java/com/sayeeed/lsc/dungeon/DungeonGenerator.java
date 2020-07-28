@@ -58,7 +58,7 @@ public class DungeonGenerator
 			if (jigsawEntity != null)
 			{
 				LootSlashConquer.LOGGER.info("jigsaw generating.");
-				jigsawEntity.generate(dungeonWorld, 7, false);
+				jigsawEntity.generate(dungeonWorld, 13, false);
 				
 			}
 		}
