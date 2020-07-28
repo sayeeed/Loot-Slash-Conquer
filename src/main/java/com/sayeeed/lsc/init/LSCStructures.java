@@ -77,9 +77,9 @@ public class LSCStructures
 	
 	private static final Identifier INITIALIZERS = Reference.id("initializers");
 	private static final Identifier START = Reference.id("starting_pool");
-	private static final Identifier ALL_HALLWAYS = Reference.id("all_hallways");
-	private static final Identifier STRICT_HALLWAYS = Reference.id("strict_hallways");
-	private static final Identifier ALL_ROOMS = Reference.id("all_rooms");
+	private static final Identifier MAIN = Reference.id("main");
+	private static final Identifier HALLWAYS = Reference.id("hallways");
+	private static final Identifier TERMINATORS = Reference.id("terminators");
 	
 	static
 	{
@@ -107,11 +107,15 @@ public class LSCStructures
 		
 		StructurePoolBasedGenerator.REGISTRY.add(
                 new StructurePool(
-                        ALL_HALLWAYS,
-                        new Identifier("empty"),
+                        MAIN,
+                        TERMINATORS,
                         ImmutableList.of(
+                                Pair.of(new SinglePoolElement("lsc:dungeons/rooms/simple_room_1"), 10),
                                 Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_straight_1"), 1),
-                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_straight_room_1"), 1)
+                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_right_1"), 1),
+                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_left_1"), 1),
+                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_t_1"), 1),
+                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_4way_1"), 1)
                         ),
                         StructurePool.Projection.RIGID
                 )
@@ -119,11 +123,14 @@ public class LSCStructures
 		
 		StructurePoolBasedGenerator.REGISTRY.add(
                 new StructurePool(
-                        STRICT_HALLWAYS,
-                        new Identifier("empty"),
+                        HALLWAYS,
+                        TERMINATORS,
                         ImmutableList.of(
                                 Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_straight_1"), 1),
-                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_straight_room_1"), 1)
+                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_right_1"), 1),
+                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_left_1"), 1),
+                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_t_1"), 1),
+                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_4way_1"), 1)
                         ),
                         StructurePool.Projection.RIGID
                 )
@@ -131,10 +138,10 @@ public class LSCStructures
 		
 		StructurePoolBasedGenerator.REGISTRY.add(
                 new StructurePool(
-                        ALL_ROOMS,
+                        TERMINATORS,
                         new Identifier("empty"),
                         ImmutableList.of(
-                                Pair.of(new SinglePoolElement("lsc:dungeons/rooms/simple_room_1"), 1)
+                        		 Pair.of(new SinglePoolElement("lsc:dungeons/terminators/terminator"), 1)
                         ),
                         StructurePool.Projection.RIGID
                 )

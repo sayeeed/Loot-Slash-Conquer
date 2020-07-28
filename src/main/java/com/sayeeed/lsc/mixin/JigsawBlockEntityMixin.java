@@ -26,6 +26,6 @@ public class JigsawBlockEntityMixin extends BlockEntity
 	{
 		LootSlashConquer.LOGGER.info("Mixin running in ......");
 		
-		world.setBlockState(this.getPos(), Blocks.STONE_BRICKS.getDefaultState());
+		//world.setBlockState(this.getPos(), Blocks.STONE_BRICKS.getDefaultState());
 	}
 }
