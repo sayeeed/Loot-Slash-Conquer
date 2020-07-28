@@ -38,8 +38,8 @@ public class DungeonPortalGenerator
                         DUNGEON_PORTAL,
                         new Identifier("empty"),
                         ImmutableList.of(
-                                new Pair<>(new LegacySinglePoolElement(Reference.MODID + ":dungeons/portals/overworld_portal_1"), 1)
-                        		//new Pair<>(new LegacySinglePoolElement(Reference.MODID + ":dungeons/starting_rooms/starting_room_1"), 1)
+                                //new Pair<>(new LegacySinglePoolElement(Reference.MODID + ":dungeons/portals/overworld_portal_1"), 1)
+                        		new Pair<>(new LegacySinglePoolElement(Reference.MODID + ":dungeons/starting_rooms/starting_room_1"), 1)
                         ),
                         StructurePool.Projection.RIGID
                 )
@@ -48,7 +48,7 @@ public class DungeonPortalGenerator
 	
 	public static void addPieces(ChunkGenerator chunkGenerator, StructureManager structureManager, BlockPos pos, List<StructurePiece> pieces, ChunkRandom random) 
 	{
-        StructurePoolBasedGenerator.addPieces(DUNGEON_PORTAL, 7, DungeonPortalGenerator.Piece::new, chunkGenerator, structureManager, pos, pieces, random, true, true);
+        StructurePoolBasedGenerator.addPieces(DUNGEON_PORTAL, 10, DungeonPortalGenerator.Piece::new, chunkGenerator, structureManager, pos, pieces, random, true, true);
     }
 	
 	public static class Piece extends PoolStructurePiece 

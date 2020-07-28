@@ -3,8 +3,6 @@ package com.sayeeed.lsc.dungeon;
 import java.util.Iterator;
 import java.util.List;
 
-import com.google.common.collect.ImmutableList;
-import com.mojang.datafixers.util.Pair;
 import com.sayeeed.lsc.LootSlashConquer;
 import com.sayeeed.lsc.block.entity.DungeonPortalBlockEntity;
 import com.sayeeed.lsc.init.LSCDimensions;
@@ -18,10 +16,6 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.structure.Structure;
 import net.minecraft.structure.Structure.StructureBlockInfo;
 import net.minecraft.structure.StructurePlacementData;
-import net.minecraft.structure.pool.SinglePoolElement;
-import net.minecraft.structure.pool.StructurePool;
-import net.minecraft.structure.pool.StructurePoolBasedGenerator;
-import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -36,11 +30,7 @@ import net.minecraft.world.World;
  *
  */
 public class DungeonGenerator 
-{
-	private static final Identifier START = Reference.id("starting_pool");
-	private static final Identifier HALLWAYS = Reference.id("hallways");
-	private static final Identifier ROOMS = Reference.id("rooms");
-	
+{	
 	/**
 	 * Generates the dungeon from .nbt and run data handlers to generate jigsaw blocks and handle loot.
 	 * @param player
@@ -54,7 +44,7 @@ public class DungeonGenerator
 		ServerWorld serverWorld = (ServerWorld) portalEntity.getWorld();
 		ServerWorld dungeonWorld = serverWorld.getServer().getWorld(LSCDimensions.DUNGEON_DIMENSION);
 		
-		Structure structure = dungeonWorld.getStructureManager().getStructure(Reference.id("dungeons/starting_rooms/starting_room_1"));
+		Structure structure = dungeonWorld.getStructureManager().getStructure(Reference.id("dungeons/dungeon_initializer"));
 		StructurePlacementData placement = new StructurePlacementData();
 		structure.place(dungeonWorld.getWorld(), dungeonPos, placement, dungeonWorld.getRandom());
 		List<StructureBlockInfo> structureBlockInfos = structure.getInfosForBlock(dungeonPos, placement, Blocks.JIGSAW);
@@ -67,7 +57,9 @@ public class DungeonGenerator
 			
 			if (jigsawEntity != null)
 			{
-				jigsawEntity.generate(dungeonWorld, 7, false);
+				LootSlashConquer.LOGGER.info("jigsaw generating.");
+				jigsawEntity.generate(dungeonWorld, 15, false);
+				
 			}
 		}
 		
@@ -133,41 +125,5 @@ public class DungeonGenerator
 					// set loot table
 			}
 		}
-	}
-	
-	static
-	{
-		StructurePoolBasedGenerator.REGISTRY.add(
-                new StructurePool(
-                        START,
-                        new Identifier("empty"),
-                        ImmutableList.of(
-                        		 Pair.of(new SinglePoolElement("lsc:dungeons/starting_rooms/starting_room_1"), 1)
-                        ),
-                        StructurePool.Projection.RIGID
-                )
-        );
-		
-		StructurePoolBasedGenerator.REGISTRY.add(
-                new StructurePool(
-                        HALLWAYS,
-                        new Identifier("empty"),
-                        ImmutableList.of(
-                                Pair.of(new SinglePoolElement("lsc:dungeons/hallways/hallway_straight_1"), 1)
-                        ),
-                        StructurePool.Projection.RIGID
-                )
-        );
-		
-		StructurePoolBasedGenerator.REGISTRY.add(
-                new StructurePool(
-                        ROOMS,
-                        new Identifier("empty"),
-                        ImmutableList.of(
-                                Pair.of(new SinglePoolElement("lsc:dungeons/rooms/simple_room_1"), 1)
-                        ),
-                        StructurePool.Projection.RIGID
-                )
-        );
 	}
 }

@@ -70,7 +70,7 @@ public class DungeonPortalBlockEntity extends BlockEntity implements Tickable
 		{
 			ServerWorld dungeonWorld = currentWorld.getServer().getWorld(LSCDimensions.DUNGEON_DIMENSION);
 			
-			FabricDimensions.teleport(player, dungeonWorld, DungeonPlacementHandler.enter(dungeonPos.add(5, 2, 5)));
+			FabricDimensions.teleport(player, dungeonWorld, DungeonPlacementHandler.enter(dungeonPos.add(0, 2, 0)));
 			
 			partyCount++;
 			this.markDirty();

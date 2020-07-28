@@ -4,7 +4,8 @@
   "package": "com.sayeeed.lsc.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-  	"SinglePoolElementMixin"
+  	"SinglePoolElementMixin",
+  	"JigsawBlockEntityMixin"
   ],
   "client": [
   ],

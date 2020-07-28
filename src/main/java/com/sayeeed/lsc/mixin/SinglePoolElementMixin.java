@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import com.mojang.datafixers.util.Either;
+import com.sayeeed.lsc.LootSlashConquer;
 import com.sayeeed.lsc.dungeon.DungeonGenerator;
 import com.sayeeed.lsc.init.LSCDimensions;
 
@@ -37,13 +38,15 @@ import net.minecraft.world.gen.chunk.ChunkGenerator;
  *
  */
 @Mixin(SinglePoolElement.class)
-public abstract class SinglePoolElementMixin 
+public abstract class SinglePoolElementMixin
 {
 	@Shadow @Final protected Either<Identifier, Structure> field_24015;
 	
-	@Inject(at = @At(value = "RETURN", ordinal = -1), method = "generate")
+	@Inject(at = @At(value = "RETURN", ordinal = 1), method = "generate")
 	private void generate(StructureManager structureManager, ServerWorldAccess serverWorldAccess, StructureAccessor structureAccessor, ChunkGenerator chunkGenerator, BlockPos blockPos, BlockPos blockPos2, BlockRotation blockRotation, BlockBox blockBox, Random random, boolean keepJigsaws, CallbackInfoReturnable<Boolean> callbackInfo)
 	{
+		LootSlashConquer.LOGGER.info("mixing running...");
+		
 		if (serverWorldAccess.getWorld().getRegistryKey() == LSCDimensions.DUNGEON_DIMENSION)
 		{
 			Structure structure = this.method_27233(structureManager);
