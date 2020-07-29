@@ -8,9 +8,9 @@ import net.minecraft.item.ItemGroup;
  * @author sayeeed
  *
  */
-public class ItemGem extends Item
+public class GemItem extends Item
 {
-	public ItemGem(Settings settings) 
+	public GemItem(Settings settings) 
 	{
 		super(settings);
 		settings.group(ItemGroup.MISC); // TODO: change to custom item group

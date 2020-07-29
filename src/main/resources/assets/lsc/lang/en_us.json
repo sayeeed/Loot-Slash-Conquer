@@ -5,5 +5,17 @@
 	"item.lsc.jade_gem": "Jade",
 	"item.lsc.sapphire_gem": "Sapphire",
 	"item.lsc.amethyst_gem": "Amethyst",
-	"item.lsc.flawless_diamond_gem": "Flawless Diamond"
+	"item.lsc.flawless_diamond_gem": "Flawless Diamond",
+	"item.lsc.wooden_dagger": "Wooden Dagger",
+	"item.lsc.wooden_mace": "Wooden Mace",
+	"item.lsc.stone_dagger": "Stone Dagger",
+	"item.lsc.stone_mace": "Stone Mace",
+	"item.lsc.golden_dagger": "Golden Dagger",
+	"item.lsc.golden_mace": "Golden Mace",
+	"item.lsc.iron_dagger": "Iron Dagger",
+	"item.lsc.iron_mace": "Iron Mace",
+	"item.lsc.diamond_dagger": "Diamond Dagger",
+	"item.lsc.diamond_mace": "Diamond Mace",
+	"item.lsc.netherite_dagger": "Netherite Dagger",
+	"item.lsc.netherite_mace": "Netherite Mace"
 }
