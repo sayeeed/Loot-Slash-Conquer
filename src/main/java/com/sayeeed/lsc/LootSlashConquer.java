@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import com.sayeeed.lsc.init.LSCBlockEntities;
 import com.sayeeed.lsc.init.LSCBlocks;
 import com.sayeeed.lsc.init.LSCDimensions;
+import com.sayeeed.lsc.init.LSCEvents;
 import com.sayeeed.lsc.init.LSCItems;
 import com.sayeeed.lsc.init.LSCStructures;
 import com.sayeeed.lsc.util.Reference;
@@ -32,6 +33,7 @@ public class LootSlashConquer implements ModInitializer
 		LSCItems.registerItems();
 		LSCBlocks.registerBlocks();
 		LSCBlockEntities.registerBlockEntities();
+		LSCEvents.registerEvents();
 		LSCStructures.registerStructures();
 		LSCDimensions.registerDimensions();
 	}

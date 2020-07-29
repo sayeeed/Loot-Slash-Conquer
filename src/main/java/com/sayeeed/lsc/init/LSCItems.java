@@ -12,8 +12,6 @@ import net.minecraft.util.registry.Registry;
 /**
  * 
  * @author sayeeed
- * 
- * class to contain items.
  *
  */
 public class LSCItems 
