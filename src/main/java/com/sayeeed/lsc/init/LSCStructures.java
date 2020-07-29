@@ -29,7 +29,7 @@ import net.minecraft.world.gen.feature.StructureFeature;
  */
 public class LSCStructures 
 {
-	public static final ConfiguredStructureFeature<DefaultFeatureConfig, ? extends StructureFeature<DefaultFeatureConfig>> DUNGEON_PORTAL = register("dungeon_portal_feature", new DungeonPortalStructure(), 165755306, false, false);
+	public static final ConfiguredStructureFeature<DefaultFeatureConfig, ? extends StructureFeature<DefaultFeatureConfig>> DUNGEON_PORTAL = register("dungeon_portal", new DungeonPortalStructure(), 165755306, false, false);
     public static final StructurePieceType DUNGEON_PORTAL_PIECE = Registry.register(Registry.STRUCTURE_PIECE, Reference.id("dungeon_portal_piece"), DungeonPortalGenerator.Piece::new);
 
     public static Biome.Category category;

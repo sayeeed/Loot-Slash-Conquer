@@ -57,9 +57,8 @@ public class DungeonGenerator
 			
 			if (jigsawEntity != null)
 			{
-				LootSlashConquer.LOGGER.info("jigsaw generating.");
+				// int = jigsaw depth
 				jigsawEntity.generate(dungeonWorld, 13, false);
-				
 			}
 		}
 		
@@ -123,6 +122,15 @@ public class DungeonGenerator
 			{
 				case "chest":
 					// set loot table
+					return;
+				case "dungeon_controller":
+					// process controller
+					return;
+				case "lava_trap_1":
+					// example room controller;
+					return;
+				default:
+					return;
 			}
 		}
 	}
