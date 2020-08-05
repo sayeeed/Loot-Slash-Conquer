@@ -1,6 +1,5 @@
 package com.sayeeed.lsc.loot.socket.weapon;
 
-import com.sayeeed.lsc.LootSlashConquer;
 import com.sayeeed.lsc.damage.LSCDamageSource;
 import com.sayeeed.lsc.loot.Socket;
 import com.sayeeed.lsc.loot.socket.WeaponSocket;
@@ -11,12 +10,12 @@ import net.minecraft.nbt.CompoundTag;
 
 /**
  * 
- * @author sayeed
+ * @author sayeeed
  *
  */
-public class FireDamageSocket extends Socket implements WeaponSocket
+public class FrostDamageSocket extends Socket implements WeaponSocket
 {
-	public FireDamageSocket(String name)
+	public FrostDamageSocket(String name)
 	{
 		super(name);
 	}
@@ -24,14 +23,13 @@ public class FireDamageSocket extends Socket implements WeaponSocket
 	@Override
 	public void onHit(ItemStack stack, float damage, LivingEntity attacker, LivingEntity enemy)
 	{
-		LootSlashConquer.LOGGER.info("adding fire damage...");
-		enemy.damage(LSCDamageSource.FIRE, (float) this.getSocketValue(stack.getTag()));
+		enemy.damage(LSCDamageSource.SHOCK, (float) this.getSocketValue(stack.getTag()));
 	}
 
 	@Override
 	public String getTooltipDisplay(CompoundTag tag) 
 	{
-		String tooltip = " * +" + getSocketValue(tag) + " Fire Damage";
+		String tooltip = " * +" + getSocketValue(tag) + " Frost Damage";
 		
 		return getSocketRarity(tag).getColor() + tooltip;
 	}
