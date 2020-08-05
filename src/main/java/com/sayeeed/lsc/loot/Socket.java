@@ -1,7 +1,12 @@
 package com.sayeeed.lsc.loot;
 
-import com.sayeeed.lsc.init.LSCItems;
+import java.util.ArrayList;
 
+import com.google.common.collect.Lists;
+import com.sayeeed.lsc.loot.socket.weapon.FireDamageSocket;
+
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundTag;
 
@@ -12,7 +17,9 @@ import net.minecraft.nbt.CompoundTag;
  */
 public abstract class Socket 
 {
+	public static final Socket FIRE_DAMAGE = new FireDamageSocket("Fire Damage");
 	
+	public static ArrayList<Socket> ALL_SOCKETS = Lists.newArrayList();
 	
 	private String name;
 	
@@ -26,21 +33,20 @@ public abstract class Socket
 		return tag.getBoolean(name);
 	}
 	
-	public void addSocket(ItemStack stack, CompoundTag tag)
+	public void addSocket(ItemStack stack, CompoundTag tag, Rarity rarity)
 	{
 		tag.putBoolean(name, true);
+		tag.putInt(name + "_rarity", rarity.ordinal());
 		
-		if (stack.getItem() == LSCItems.GARNET_GEM) tag.putInt(name + "_rarity", 1);
-		else if (stack.getItem() == LSCItems.JADE_GEM) tag.putInt(name + "_rarity", 2);
-		else if (stack.getItem() == LSCItems.SAPPHIRE_GEM) tag.putInt(name + "_rarity", 3);
-		else if (stack.getItem() == LSCItems.AMETHYST_GEM) tag.putInt(name + "_rarity", 4);
-		else if (stack.getItem() == LSCItems.FLAWLESS_DIAMOND_GEM) tag.putInt(name + "_rarity", 5);
+		// testing
+		tag.putDouble(name + "_value", 3.0);
 	}
 	
 	public void removeSocket(CompoundTag tag)
 	{
 		tag.remove(name);
 		tag.remove(name + "_rarity");
+		tag.remove(name + "_value");
 	}
 	
 	public double getSocketValue(CompoundTag tag)
@@ -67,11 +73,17 @@ public abstract class Socket
 		}
 	}
 	
-	// client-side annotation?
-	public abstract String getTooltipDisplay(CompoundTag nbt);
+	@Environment(EnvType.CLIENT)
+	public abstract String getTooltipDisplay(CompoundTag tag);
 	
 	public String getName()
 	{
 		return name;
+	}
+	
+	static
+	{
+		// weapon sockets
+		ALL_SOCKETS.add(FIRE_DAMAGE);
 	}
 }

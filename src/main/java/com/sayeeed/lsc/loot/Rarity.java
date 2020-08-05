@@ -19,7 +19,7 @@ import net.minecraft.util.Formatting;
  */
 public enum Rarity 
 {
-	DEFAULT("default", Formatting.DARK_GRAY, 0.0),
+	DEFAULT("default", Formatting.WHITE, 0.0),
 	COMMON("Common", Formatting.WHITE, 0.65),
 	UNCOMMON("Uncommon", Formatting.DARK_GREEN, 0.17),
 	RARE("Rare", Formatting.AQUA, 0.1),
@@ -46,7 +46,7 @@ public enum Rarity
 	 * @param rand
 	 * @return
 	 */
-	public static Rarity getRandomRarity(CompoundTag nbt, Random rand)
+	public static Rarity getRandomRarity(CompoundTag tag, Random rand)
 	{	
 		return RANDOM_RARITIES.next(rand);
 	}
@@ -56,9 +56,9 @@ public enum Rarity
 	 * @param nbt
 	 * @return
 	 */
-	public static Rarity getRarity(CompoundTag nbt)
+	public static Rarity getRarity(CompoundTag tag)
 	{
-		return nbt.contains(Reference.RARITY_TAG) ? Rarity.values()[nbt.getInt(Reference.RARITY_TAG)] : DEFAULT;
+		return tag.contains(Reference.RARITY_TAG) ? Rarity.values()[tag.getInt(Reference.RARITY_TAG)] : DEFAULT;
 	}
 	
 	/**
@@ -66,9 +66,9 @@ public enum Rarity
 	 * @param nbt
 	 * @param rarity
 	 */
-	public static void setRarity(CompoundTag nbt, Rarity rarity)
+	public static void setRarity(CompoundTag tag, Rarity rarity)
 	{
-		nbt.putInt(Reference.RARITY_TAG, rarity.ordinal());
+		tag.putInt(Reference.RARITY_TAG, rarity.ordinal());
 	}
 
 	
