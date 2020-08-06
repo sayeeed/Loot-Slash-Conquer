@@ -13,6 +13,8 @@ import net.minecraft.nbt.CompoundTag;
  * 
  * @author sayeed
  *
+ * Inflicts additional fire elemental damage. This damage bypasses armor as well as typical Fire Resistance.
+ *
  */
 public class FireDamageSocket extends Socket implements WeaponSocket
 {

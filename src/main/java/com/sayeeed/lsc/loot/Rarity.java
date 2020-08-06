@@ -25,7 +25,7 @@ public enum Rarity
 	RARE("Rare", Formatting.AQUA, 0.1),
 	EPIC("Epic", Formatting.DARK_PURPLE, 0.05),
 	LEGENDARY("Legendary", Formatting.GOLD, 0.025),
-	EXOTIC("Exotic", Formatting.LIGHT_PURPLE, 0.005);
+	EXOTIC("Exotic", Formatting.YELLOW, 0.005);
 	
 	private String name;
 	private String color;
